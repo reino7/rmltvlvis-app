@@ -3,11 +3,11 @@ const mysql = require('mysql');
 // Create MySQL connection
 const dbConnection = mysql.createConnection({
 
-  host: '',     // database host
+  host: 'darkside.ee',     // database host
   port: 3306,   // default MySQL port
-  user: '',     // your database username
-  password: '', // your database password
-  database: ''  // your database name
+  user: 'rmltvlvis-app-dbuser',     // your database username
+  password: 'Kaskollasedtulukesedp6levad?', // your database password
+  database: 'rmltvlvis_app_db_test'  // your database name
 
 });
 

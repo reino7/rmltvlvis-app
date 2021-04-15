@@ -1,19 +1,24 @@
 // Imports and requires
 const express = require('express');
 const path = require('path');
-var expressLayouts = require('express-ejs-layouts');
-var dbConfig = require('./config/db.config.js');
+//var dbConfig = require('./config/db.config.js');
 
-const HOSTNAME = 'ubuntusrv';
+const HOSTNAME = 'localhost';
 const PORT = 3000;
 const app = express();
 
+// Static Files
+app.use(express.static('public'))
+
 // Set view engine to ejs
 app.set('view engine', 'ejs');
-app.use(expressLayouts);
 
-//Set static folder
-app.use(express.static(path.join(__dirname, 'public')));
+// index page
+app.get('/', function(req, res) {
+  res.render('pages/index');
+});
+
+
 
 // Listen on Port 
 app.listen(PORT, HOSTNAME, () => {
