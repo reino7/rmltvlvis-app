@@ -7,7 +7,7 @@ const HOSTNAME = 'localhost';
 const PORT = 3000;
 const app = express();
 
-// Static Files
+// Static Files ...
 app.use(express.static('public'))
 
 // Set view engine to ejs
