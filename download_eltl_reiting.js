@@ -4,9 +4,10 @@ const fs = require('fs');
 const path = require('path');
 const { get } = require('http');
 const moment = require('moment');
+const xml2js = require('xml2js');
 
-// const fileURL = 'https://www.lauatennis.ee/app_partner/app_eltlid_reitinguga_xml.php'; 
-const fileURL = 'https://speed.hetzner.de/100MB.bin'; 
+const fileURL = 'https://www.lauatennis.ee/app_partner/app_eltlid_reitinguga_xml.php';
+
 
 function downloadFile(url, callback) {
 
@@ -17,7 +18,7 @@ function downloadFile(url, callback) {
     // This opens up the writeable stream
     const fileStream = fs.createWriteStream(filename);
     res.pipe(fileStream);
-    console.log(moment().format('YYYY.MM.DD hh:mm:ss') + ' Download started');
+    console.log(moment().format('YYYY.MM.DD hh:mm:ss') + ' ' + filename + ' download started');
 
     // If an error occurs, then show it
     fileStream.on('error', function (err) {
@@ -31,18 +32,38 @@ function downloadFile(url, callback) {
 
     fileStream.on('finish', function () {
       fileStream.close();
-      console.log(moment().format('YYYY.MM.DD hh:mm:ss') + ' Download finished');
+      console.log(moment().format('YYYY.MM.DD hh:mm:ss') + ' ' + filename + ' download finished');
     });
   });
 
+  // If an error occurs on downloading, then show it
   req.on('error', function (err) {
-    console.log(moment().format('YYYY.MM.DD hh:mm:ss') + ' Error downloading the file');
+    console.log(moment().format('YYYY.MM.DD hh:mm:ss') + ' Error downloading');
     console.log(err);
   });
 
 }
 
+
 // Call file downloading function
-downloadFile(fileURL, function(fn) {
-  console.log(fn);
+downloadFile(fileURL, function (fn) {
+
+  var parser = new xml2js.Parser();
+  fs.readFile(__dirname + '/app_eltlid_reitinguga_xml.php', function (err, data) {
+    parser.parseString(data, function (err, result) {
+      console.log(moment().format('YYYY.MM.DD hh:mm:ss') + ' Reading content of ' + fn + ' started');
+      // console.dir(result.PERSONS.PERSON);
+      let resultsPersons = result.PERSONS.PERSON;
+
+      for (let i = 0; i < resultsPersons.length; i++) {
+        const element = resultsPersons[i];
+        // console.log(element);
+      }
+
+      console.log(moment().format('YYYY.MM.DD hh:mm:ss') + ' Reading content of ' + fn + ' finished');
+    });
+  });
+
 })
+
+
