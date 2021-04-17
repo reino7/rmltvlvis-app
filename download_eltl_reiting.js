@@ -5,6 +5,9 @@ const path = require('path');
 const { get } = require('http');
 const moment = require('moment');
 const xml2js = require('xml2js');
+const dbConfig = require('./config/db.config.js');
+
+
 
 const fileURL = 'https://www.lauatennis.ee/app_partner/app_eltlid_reitinguga_xml.php';
 
@@ -65,5 +68,6 @@ downloadFile(fileURL, function (fn) {
   });
 
 })
+
 
 
