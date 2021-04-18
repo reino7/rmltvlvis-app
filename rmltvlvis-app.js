@@ -31,17 +31,16 @@ app.get('/', function (req, res) {
 
 // reiting page
 app.get('/reiting', (req, res) => {
-  let sql = 'SELECT * FROM reiting LIMIT 10';
+  let sql = "SELECT * FROM reiting WHERE RATEORDER BETWEEN 1 AND 1000 AND SEX = 'M' ORDER BY RATEORDER ASC LIMIT 1000";
   let query = dbConnection.query(sql, (err, results) => {
     if (err) throw err;
-    // console.log(results);
 
-    for (let i = 0; i < results.length; i++) {
-      const element = results[i];
-      console.log(element.PERSONID + ' ' + element.FIRSTNAME + ' ' + element.FAMNAME + ' ' + element.SEX);
-    }
+    // for (let i = 0; i < results.length; i++) {
+    //   const element = results[i];
+    //   console.log(element.PERSONID + ' ' + element.FIRSTNAME + ' ' + element.FAMNAME + ' ' + element.SEX);
+    // }
 
-    res.render('pages/reiting');
+    res.render('pages/reiting', { results : results });
     //res.send('Reiting fetched');
   });
 });

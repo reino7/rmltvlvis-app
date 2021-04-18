@@ -10,24 +10,41 @@
 
   <div class="container my-5">
     
-    <h2 class="text-center my-4">Reitingud</h2>
-
+    <h2 class="text-center my-4">Eesti Lauatenniseliidu reiting</h2>
     <div class="table-responsive-md">
 
       <table class="table table-hover" id="reitinguNimekiri">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">Koht reitingus</th>
-            <th scope="col">Paigutuspunktid</th>
-            <th scope="col">Reitingupunktid</th>
-            <th scope="col">Kaalud</th>
-            <th scope="col">Nimi</th>
+            <th scope="col" data-toggle="tooltip" title="Koht reitingus">NR</th>
+            <th scope="col" data-toggle="tooltip" title="Paigutuspunktid">PP</th>
+            <th scope="col" data-toggle="tooltip" title="Reitingupunktid">RP</th>
+            <th scope="col" data-toggle="tooltip" title="Kaalud">KL</th>
+            <th scope="col" data-toggle="tooltip" title="Eesti Lauatenniseliidu ID">ELTL ID</th>
+            <th scope="col">Eesnimi</th>
+            <th scope="col">Perekonnanimi</th>
             <th scope="col">Sünniaasta</th>
             <th scope="col">Sugu</th>
-            <th scope="col">ID</th>
             <th scope="col">Klubi</th>
           </tr>
         </thead>
+        <tbody>
+          <tr>
+          <% for(let result of results) { %>
+          <tr>
+            <td class="font-weight-bolder"><%= result.RATEORDER %></td>
+            <td><%= result.RATEPLPNTS %></td>
+            <td><%= result.RATEPOINTS %></td>
+            <td><%= result.RATEWEIGHT %></td>
+            <td><%= result.PERSONID %></td>
+            <td class="font-weight-bolder"><%= result.FIRSTNAME %></td>
+            <td class="font-weight-bolder"><%= result.FAMNAME %></td>
+            <td><%= result.BIRTHDATE %></td>
+            <td><%= result.SEX %></td>
+            <td><%= result.CLBNAME %></td>
+          </tr>
+          <% } %>
+        </tbody>
       </table>
     
     </div>
