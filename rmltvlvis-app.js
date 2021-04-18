@@ -5,9 +5,13 @@ const mysql = require('mysql');
 const databaseOptions = require('./config/db.config.js');
 
 const HOSTNAME = 'localhost';
+// const HOSTNAME = 'ubuntusrv';
 const PORT = 3000;
 const app = express();
 
+// Set view engine to ejs
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 // Create connection to db
 var dbConnection = mysql.createConnection(databaseOptions);
@@ -19,10 +23,8 @@ dbConnection.connect(function (err) {
 })
 
 // Static Files
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Set view engine to ejs
-app.set('view engine', 'ejs');
 
 // index page
 app.get('/', function (req, res) {

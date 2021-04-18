@@ -10,6 +10,18 @@ function checkAnswer() {
   return false;
 }
 
+
+// table filter/search with jQuery
+$(document).ready(function () {
+  $("#myInput").on("keyup", function () {
+      var value = $(this).val().toLowerCase();
+      $("#reitingTable tr").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+  });
+});
+
+
 // võistlejate registreerimisel tabelist tabelisse kopeerimine
 $(function() {
 	window.focus()
