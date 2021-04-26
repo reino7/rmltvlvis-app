@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="et">
+
+<head>
+  <%- include('partials/head'); %>
+</head>
+
+<body>
+
+  <%- include('partials/header'); %>
+
+    <div class="container my-5">
+      <div class="row my-3">
+        <div class="col">
+          <!-- <a class="btn btn-secondary mx-right" href="#" role="button">
+            <i class="fas fa-plus"></i>
+            Lisa võistlus
+          </a> -->
+        </div>
+        <div class="col">
+          <h2 class="text-center">Võistlused</h2>
+        </div>
+        <div class="col text-right">
+          <a class="btn btn-secondary mx-right" href="/competitions/add" role="button">
+            <i class="fas fa-plus"></i>
+            Lisa võistlus
+          </a>
+        </div>
+      </div>
+      <div class="table-responsive-md">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col" class="text-center">Kuupäev</th>
+              <th scope="col" class="text-center">Algusaeg</th>
+              <th scope="col">Võistluse nimetus</th>
+              <th scope="col">Võistluskoht</th>
+              <th scope="col">Kohtunik</th>
+              <th scope="col">Korraldaja</th>
+              <th scope="col">Toimingud</th>
+            </tr>
+          </thead>
+          </thead>
+          <tbody id="competitionsTable">
+            <tr>
+              <% for(let competition of results) { %>
+            <tr>
+              <td>
+                <%= competition.competitionsdate %>
+              </td>
+              <td>
+                <%= competition.competitionstime %>
+              </td>
+              <td>
+                <a class="text-dark" href="competitions/<%= competition.id %>/info"><%= competition.competitionsname %></a>
+              </td>
+              <td>
+                <%= competition.location %>
+              </td>
+              <td>
+                <%= competition.referee %>
+              </td>
+              <td>
+                <%= competition.organizer %>
+              </td>
+              <td>
+                <div class="text-center">
+                  <a class="btn btn-secondary btn-sm rounded-0" href="competitions/edit/<%= competition.id %>" class=""><i class="fa fa-edit"></i></a>
+                <!-- <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
+                  data-placement="top" title="Muuda"></button> -->
+                </div>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <%- include('partials/footer'); %>
+
+</body>
+
+</html>

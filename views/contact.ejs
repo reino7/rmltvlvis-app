@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="et">
+
+<head>
+  <%- include('partials/head'); %>
+</head>
+
+<body>
+
+  <%- include('partials/header'); %>
+
+    <div class="container my-5">
+      <h2 class="text-center my-4">Võta ühendust</h2>
+      <form class="w-50 mx-auto">
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+          </div>
+          <input type="text" class="form-control" required="" id="name" placeholder="Ees- ja perekonnanimi">
+        </div>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+          </div>
+          <input type="email" class="form-control" required="" id="email" placeholder="E-posti aadress">
+        </div>
+        <textarea class="form-control my-3" required="" rows="7" placeholder="Kirjuta siia sõnum ..."></textarea>
+        <button type="submit" class="btn btn-secondary btn-block w-50 mx-auto" disabled>Saada sõnum teele</button>
+      </form>
+    </div>
+
+    <%- include('partials/footer'); %>
+
+</body>
+
+</html>

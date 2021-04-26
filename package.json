@@ -1,22 +1,11 @@
 {
-  "name": "y",
+  "name": "rmltvlvis-app",
   "version": "1.0.0",
   "description": "Rapla Maakonna lauatennise võistluste läbiviimise infosüsteem",
-  "main": "rmltvlvis-app.js",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "ejs": "^3.1.6",
-    "express": "^4.17.1",
-    "express-ejs-layouts": "^2.5.0",
-    "moment": "^2.29.1",
-    "mysql": "^2.18.1",
-    "xml2js": "^0.4.23"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.7"
-  },
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -27,5 +16,16 @@
   "bugs": {
     "url": "https://github.com/reino7/rmltvlvis-app/issues"
   },
-  "homepage": "https://github.com/reino7/rmltvlvis-app#readme"
+  "homepage": "https://github.com/reino7/rmltvlvis-app#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.7"
+  }
 }

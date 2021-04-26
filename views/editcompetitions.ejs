@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="et">
+
+<head>
+  <%- include('partials/headforedit'); %>
+
+</head>
+
+<body>
+
+  <%- include('partials/header'); %>
+
+  <% if (competitions) { %>
+
+    <div class="container my-5">
+      <h2 class="text-center my-4">Võistluse muutmine </h2>
+
+      <form action="" method="POST" class="w-50 mx-auto">
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label class="font-weight-bold" for="competitionsdateForm">Kuupäev</label>
+            <input type="date" class="form-control" name="competitionsdateForm" value="<%= competitions.competitionsdate %>">
+          </div>
+          <div class="form-group col-md-6">
+            <label class="font-weight-bold" for="competitionstimeForm">Võistluse alguse kellaaeg</label>
+            <input type="time" class="form-control" name="competitionstimeForm" value="<%= competitions.competitionstime %>">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="font-weight-bold" for="competitionsnameForm">Võistluse nimi</label>
+          <input type="text" class="form-control" name="competitionsnameForm" value="<%= competitions.competitionsname %>">
+        </div>
+
+        <div class="form-group">
+          <label class="font-weight-bold" for="locationForm">Võistluskoht</label>
+          <input type="text" class="form-control" name="locationForm" value="<%= competitions.location %>">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label class="font-weight-bold" for="organizerForm">Korraldaja</label>
+            <input type="text" class="form-control" name="organizerForm" value="<%= competitions.organizer %>">
+          </div>
+          <div class="form-group col-md-6">
+            <label class="font-weight-bold" for="organisercontactForm">Kontakttelefon</label>
+            <input type="tel" class="form-control" name="organisercontactForm" value="<%= competitions.organisercontact %>">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label class="font-weight-bold" for="refereeForm">Kohtunik</label>
+            <input type="text" class="form-control" name="refereeForm" value="<%= competitions.referee %>">
+          </div>
+          <div class="form-group col-md-6">
+            <label class="font-weight-bold" for="refereecontactForm">Kontakttelefon</label>
+            <input type="tel" class="form-control" name="refereecontactForm" value="<%= competitions.refereecontact %>">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="font-weight-bold" for="participationfeeForm">Osavõtutasu</label>
+          <input type="text" class="form-control" name="participationfeeForm" value="<%= competitions.participationfee %>">
+        </div>
+
+
+        <div class="my-4 text-center">
+          <button type="submit" class="btn btn-secondary my-4 text-center">
+            Sisesta võistluse andmed
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+    <% } else { %>
+
+      <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+        <strong>Võistlusi ei ole!</strong>
+        <p class="mb-0">Tule vaata varsti uuesti</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <% } %>
+
+  <%- include('partials/footer'); %>
+
+</body>
+
+</html>
