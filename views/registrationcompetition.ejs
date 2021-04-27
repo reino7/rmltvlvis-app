@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="et">
+
+<head>
+  <%- include('partials/headforedit'); %>
+
+</head>
+
+<body>
+
+  <%- include('partials/header'); %>
+
+
+    <div class="container-fluid my-5">
+
+      <% if (competitionsinfo) { %>
+
+        <h2 class="text-center my-4">Võistlejate registreerimine -> <%= competitionsinfo.competitionsname %>
+        </h2>
+
+        <form action="" method="POST" class="">
+
+          <% } %>
+
+          <div class="row row-cols-1 row-cols-md-2">
+            <div class="col mb-4 border-right">
+
+              <div class="table-responsive-md">
+
+                <!-- SEARCH -->
+                <div class="row mb-2">
+                  <div class="col-sm-12 offset-sm-0">
+                    <div class="input-group input-group-lg">
+                      <span class="input-group-prepend">
+                        <div class="input-group-text bg-transparent border-right-0"><i class="fa fa-search"></i></div>
+                      </span>
+                      <!-- <input class="form-control py-2 border-left-0 border" type="text" id="myInput" data-table="order-table"
+                onfocus="this.value=''" placeholder="Otsi võistluste infot ..."> -->
+                      <input class="form-control py-2 border-left-0 border" type="search" id="myInput"
+                        data-table="order-table" placeholder="Otsi kogu tabelist ..." autofocus>
+                      <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                          Otsi
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <table class="table table-hover" id="regReitinguNimekiri">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col" data-toggle="tooltip" title="Koht reitingus">Nr</th>
+                      <th scope="col" data-toggle="tooltip" title="Eesti Lauatenniseliidu ID">ELTL ID</th>
+                      <th scope="col">Eesnimi</th>
+                      <th scope="col">Perekonnanimi</th>
+                      <th scope="col">Sünniaasta</th>
+                      <th scope="col">Sugu</th>
+                      <th scope="col">Registreeri</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="reitingTable">
+                    <tr>
+                      <td>1</td>
+                      <td>1234</td>
+                      <td>VALLOT</td>
+                      <td>VAINULA</td>
+                      <td>05/1978</td>
+                      <td>M</td>
+                      <td>
+                        <a class="btn btn-secondary mx-right" href="#" role="button">
+                          <i class="fas fa-plus"></i>
+                          Lisa
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>9876</td>
+                      <td>ALEKSANDR</td>
+                      <td>SMIRNOV</td>
+                      <td>05/1985</td>
+                      <td>M</td>
+                      <td>
+                        <a class="btn btn-secondary mx-right" href="#" role="button">
+                          <i class="fas fa-plus"></i>
+                          Lisa
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>4321</td>
+                      <td>ALEKSANDR</td>
+                      <td>LUŠIN</td>
+                      <td>05/1985</td>
+                      <td>M</td>
+                      <td>
+                        <a class="btn btn-secondary mx-right" href="#" role="button">
+                          <i class="fas fa-plus"></i>
+                          Lisa
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>1234</td>
+                      <td>STANISLAV</td>
+                      <td>STROGOV</td>
+                      <td>05/2002</td>
+                      <td>M</td>
+                      <td>
+                        <a class="btn btn-secondary mx-right" href="#" role="button">
+                          <i class="fas fa-plus"></i>
+                          Lisa
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+
+                </table>
+              </div>
+
+            </div>
+
+            <div class="col mb-4 mt-5 pt-2" id="regNimekiri">
+              <div class="table-responsive-md">
+
+                <table class="table table-hover" id="regNimekiri">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col" data-toggle="tooltip" title="Koht reitingus">Nr</th>
+                      <th scope="col" data-toggle="tooltip" title="Eesti Lauatenniseliidu ID">ELTL ID</th>
+                      <th scope="col">Eesnimi</th>
+                      <th scope="col">Perekonnanimi</th>
+                      <th scope="col">Sünniaasta</th>
+                      <th scope="col">Sugu</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+
+          </div>
+          <div class="my-4 text-center">
+            <button type="submit" class="btn btn-secondary my-4 text-center">
+              Sisesta võistlejad tabelisse
+            </button>
+          </div>
+        </form>
+
+    </div>
+
+
+    <%- include('partials/footer'); %>
+
+</body>
+
+</html>
