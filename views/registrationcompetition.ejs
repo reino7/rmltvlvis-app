@@ -13,14 +13,14 @@
 
     <div class="container-fluid my-5">
 
-      <% if (competitionsinfo) { %>
+      <% for(let result of competitionsinfo) { %>
 
-        <h2 class="text-center my-4">Võistlejate registreerimine -> <%= competitionsinfo.competitionsname %>
+        <h2 class="text-center my-4"><%= result.competitionsname %> <br />Võistlejate registreerimine 
         </h2>
+      <% } %>
 
         <form action="" method="POST" class="">
 
-          <% } %>
 
           <div class="row row-cols-1 row-cols-md-2">
             <div class="col mb-4 border-right">
@@ -55,19 +55,18 @@
                       <th scope="col">Eesnimi</th>
                       <th scope="col">Perekonnanimi</th>
                       <th scope="col">Sünniaasta</th>
-                      <th scope="col">Sugu</th>
                       <th scope="col">Registreeri</th>
                     </tr>
                   </thead>
 
                   <tbody id="reitingTable">
+                    <% for(let result of competitionsreiting) { %>
                     <tr>
-                      <td>1</td>
-                      <td>1234</td>
-                      <td>VALLOT</td>
-                      <td>VAINULA</td>
-                      <td>05/1978</td>
-                      <td>M</td>
+                      <td><%= result.RATEORDER %></td>
+                      <td><%= result.PERSONID %></td>
+                      <td><%= result.FIRSTNAME %></td>
+                      <td><%= result.FAMNAME %></td>
+                      <td><%= result.BIRTHDATE %></td>
                       <td>
                         <a class="btn btn-secondary mx-right" href="#" role="button">
                           <i class="fas fa-plus"></i>
@@ -75,48 +74,7 @@
                         </a>
                       </td>
                     </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>9876</td>
-                      <td>ALEKSANDR</td>
-                      <td>SMIRNOV</td>
-                      <td>05/1985</td>
-                      <td>M</td>
-                      <td>
-                        <a class="btn btn-secondary mx-right" href="#" role="button">
-                          <i class="fas fa-plus"></i>
-                          Lisa
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>4321</td>
-                      <td>ALEKSANDR</td>
-                      <td>LUŠIN</td>
-                      <td>05/1985</td>
-                      <td>M</td>
-                      <td>
-                        <a class="btn btn-secondary mx-right" href="#" role="button">
-                          <i class="fas fa-plus"></i>
-                          Lisa
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>1234</td>
-                      <td>STANISLAV</td>
-                      <td>STROGOV</td>
-                      <td>05/2002</td>
-                      <td>M</td>
-                      <td>
-                        <a class="btn btn-secondary mx-right" href="#" role="button">
-                          <i class="fas fa-plus"></i>
-                          Lisa
-                        </a>
-                      </td>
-                    </tr>
+                    <% } %>
                   </tbody>
 
                 </table>
@@ -124,8 +82,15 @@
 
             </div>
 
-            <div class="col mb-4 mt-5 pt-2" id="regNimekiri">
+            <div class="col mb-4" id="regNimekiri">
               <div class="table-responsive-md">
+
+                <div class="text-right my-2">
+                  <a class="btn btn-secondary" href="/competitions/add" role="button">
+                    <i class="fas fa-plus"></i>
+                    Lisa reitinguta võistleja
+                  </a>
+                </div>
 
                 <table class="table table-hover" id="regNimekiri">
                   <thead class="thead-dark">
@@ -149,7 +114,7 @@
           </div>
           <div class="my-4 text-center">
             <button type="submit" class="btn btn-secondary my-4 text-center">
-              Sisesta võistlejad tabelisse
+              Sisesta kõik registreeritud võistlejad võistlustabelisse
             </button>
           </div>
         </form>

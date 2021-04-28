@@ -94,17 +94,20 @@ app.post('/competitions/edit/:id', function (req, res) {
 app.get('/competitions/:id/registration', function (req, res) {
 
   let competitionID = req.params.id;
-  let query = "SELECT * FROM `competitions` WHERE id = '" + competitionID + "' ";
-  let query2 = "SELECT * FROM reiting ORDER BY RATEORDER = 0 ASC, RATEORDER LIMIT 1000;";
+  let query = "SELECT * FROM `competitions` WHERE id = '" + competitionID + "'; SELECT * FROM reiting ORDER BY RATEORDER = 0 ASC, RATEORDER LIMIT 50;";
+  // let query2 = "SELECT * FROM reiting ORDER BY RATEORDER = 0 ASC, RATEORDER LIMIT 1000;";
 
   dbConnection.query(query, (err, results) => {
-
+    // console.log(results[0]);
+    // console.log(results[1]);
+    
     if (err) {
       return res.status(500).send(err);
     }
 
     res.render('registrationcompetition', {
-      competitionsinfo: results[0]
+      competitionsinfo: results[0],
+      competitionsreiting: results[1]
       // competitionsregistration: results[0]
     });
 
