@@ -11,7 +11,24 @@
 
   <main role="main" class="flex-shrink-0">
     <div class="container my-5">
-      <h2 class="text-center my-4">Ajakava</h2>
+      
+      <div class="row my-3">
+        <div class="col">
+          <!-- <a class="btn btn-secondary mx-right" href="#" role="button">
+            <i class="fas fa-plus"></i>
+            Lisa võistlus
+          </a> -->
+        </div>
+        <div class="col">
+      <h2 class="text-center">Ajakava</h2>
+        </div>
+        <div class="col text-right">
+          <a class="btn btn-secondary mx-right" href="/schedule/add" role="button">
+            <i class="fas fa-plus"></i>
+            Lisa võistlus
+          </a>
+        </div>
+      </div>
 
       <div class="table-responsive-md">
         <table class="table table-hover">
@@ -21,9 +38,26 @@
               <th scope="col">Algusaeg</th>
               <th scope="col">Võistluse nimetus</th>
               <th scope="col">Võistluskoht</th>
+              <th scope="col">Toimingud</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="sceduleTable">
+            <% for(let result of schedule) { %>
+            <tr>
+              <td><%= result.competitiondate %></td>
+              <td><%= result.competitiontime %></td>
+              <td><%= result.competitionname %></td>
+              <td><%= result.location %></td>
+              <td>
+                <div class="text-center">
+                  <a class="btn btn-secondary btn-sm rounded-0" href="schedule/edit/<%= result.scheduleid %>" class=""><i class="fa fa-edit"></i></a>
+                </div>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+
+          <!-- <tbody>
             <tr>
               <td>19.09.2020</td>
               <td>11:00</td>
@@ -108,7 +142,7 @@
               <td>Ennu Soodla mälestusvõistlus</td>
               <td>Alu Spordiklubi</td>
             </tr>
-          </tbody>
+          </tbody> -->
         </table>
       </div>
     </div>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="et" class="h-100">
+
+<head>
+  
+  <%- include('partials/headforedit'); %>
+
+</head>
+
+<body class="d-flex flex-column h-100">
+
+  <%- include('partials/header'); %>
+
+  <% if (schedule) { %>
+
+    <main role="main" class="flex-shrink-0">
+      <div class="container my-5">
+        <h2 class="text-center my-4">Võistluse lisamine ajakavas</h2>
+
+        <form action="" method="POST" class="w-50 mx-auto">
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="font-weight-bold" for="scheduledateForm">Kuupäev</label>
+              <input type="text" class="form-control" name="scheduledateForm">
+            </div>
+            <div class="form-group col-md-6">
+              <label class="font-weight-bold" for="scheduletimeForm">Võistluse alguse kellaaeg</label>
+              <input type="time" class="form-control" name="scheduletimeForm">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-bold" for="schedulenameForm">Võistluse nimi</label>
+            <input type="text" class="form-control" name="schedulenameForm">
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-bold" for="schedulelocationForm">Võistluskoht</label>
+            <input type="text" class="form-control" name="schedulelocationForm">
+          </div>
+
+          <div class="my-4 text-center">
+            <button type="submit" class="btn btn-secondary my-4 text-center">
+              Sisesta võistluse andmed
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </main>
+    <% } else { %>
+
+      <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+        <strong>Võistlusi ei ole!</strong>
+        <p class="mb-0">Tule vaata varsti uuesti</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <% } %>
+
+  <%- include('partials/footer'); %>
+
+</body>
+
+</html>

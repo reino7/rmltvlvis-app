@@ -7,7 +7,6 @@ const mysql = require('mysql2');
 
 
 var indexRouter = require('./routes/index');
-var scheduleRouter = require('./routes/schedule');
 var competitionsRouter = require('./routes/competitions');
 var addcompetitionsRouter = require('./routes/addcompetitions');
 var reitingRouter = require('./routes/reiting');
@@ -41,7 +40,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/schedule', scheduleRouter);
 app.use('/competitions', competitionsRouter);
 app.use('/competitions/add', addcompetitionsRouter);
 app.use('/reiting', reitingRouter);
@@ -49,6 +47,96 @@ app.use('/contact', contactRouter);
 app.use('/users', usersRouter);
 app.post('/add', addCompetitionRouter);
 
+
+/* GET schedule home page with ID. */
+app.get('/schedule', function (req, res) {
+
+  // res.render('competitions', { title: 'competitions' });
+
+  let sql = "SELECT * FROM schedule";
+  let query = dbConnection.query(sql, (err, results) => {
+
+    if (err) throw err;
+    res.render('schedule', { schedule : results });
+
+  });
+
+});
+
+/* GET ADD schedule home page with ID. */
+app.get('/schedule/add', function (req, res) {
+
+  let sql = "SELECT * FROM schedule";
+  let query = dbConnection.query(sql, (err, results) => {
+
+    if (err) throw err;
+    res.render('addschedule', { schedule: results });
+
+  });
+});
+
+/* POST ADD schedule home page with ID. */
+app.post('/schedule/add', function (req, res) {
+
+  let scheduledateForm = req.body.scheduledateForm;
+  let scheduletimeForm = req.body.scheduletimeForm;
+  let schedulenameForm = req.body.schedulenameForm;
+  let schedulelocationForm = req.body.schedulelocationForm;
+
+  // prepeared MySQL query
+  let sql = "INSERT INTO schedule (competitiondate, competitiontime, competitionname, location) VALUES ?";
+  
+  // values to be inserted
+  let values = [[scheduledateForm, scheduletimeForm, schedulenameForm, schedulelocationForm]];
+
+  dbConnection.query(sql, [values], (err, results) => {
+
+    // dbConnection.end();
+    if (err) throw err;
+    res.redirect('/schedule');
+    
+  });
+});
+
+/* GET EDIT on schedule home page with ID. */
+app.get('/schedule/edit/:id', function (req, res) {
+
+  let scheduleID = req.params.id;
+  let query = "SELECT * FROM `schedule` WHERE scheduleid = '" + scheduleID + "' ";
+
+  dbConnection.query(query, (err, results) => {
+
+    if (err) {
+      return res.status(500).send(err);
+    }
+
+    res.render('editschedule', {
+      schedule: results[0]
+    });
+
+  });
+});
+
+/* POST CHANGES on schedule home page with ID. */
+app.post('/schedule/edit/:id', function (req, res) {
+
+  let scheduleidForm = req.params.id;
+
+  // values to be inserted
+  let values = [req.body.scheduledateForm, req.body.scheduletimeForm, req.body.schedulenameForm, req.body.schedulelocationForm];
+
+  // prepeared MySQL query
+  let sql = "UPDATE schedule SET competitiondate = '" + values[0] + "', competitiontime = '" + values[1] + "', competitionname = '" + values[2] + "', location = '" + values[3] + "' WHERE scheduleid = '" + scheduleidForm + "'";
+
+
+  dbConnection.query(sql, (err, results) => {
+
+    // dbConnection.end();
+    if (err) throw err;
+    res.redirect('/schedule');
+
+  });
+});
 
 /* GET EDIT on COMPETITIONS home page with ID. */
 app.get('/competitions/edit/:id', function (req, res) {
