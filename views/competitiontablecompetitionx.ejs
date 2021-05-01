@@ -1,36 +1,303 @@
 <!DOCTYPE html>
-<html lang="et">
+<html lang="et" class="h-100">
 
 <head>
   <%- include('partials/headforedit'); %>
 
 </head>
+<style type="text/css">
+  .tournamenttable {
+    border-collapse: collapse;
+    /* border: 1px solid lightgray; */
+  }
 
-<body>
+  .tttd {
+    padding: 0;
+    margin: 0;
+  }
+
+  .pealkiri {
+    font-size: 30px;
+  }
+
+  .ridaindex {
+    display: none;
+    /* nأ¤ita arendamise kأ¤igus, mis indeksiga tabeli lahter on */
+    font-size: 12px;
+  }
+
+  .mangunumber {
+    /* font-size: 22px; */
+  }
+
+  .pystjoon {
+    border-right: 1px solid black;
+  }
+
+  .mangunumberCell {
+    text-align: right;
+    padding-top: 2px;
+    padding-right: 2px;
+  }
+
+  .mangija {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .tulemus {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .tulemusCell {
+    text-align: center;
+  }
+
+  .mangijaCell {
+    text-align: center;
+    border-bottom: 1px solid black;
+    /* background-color: pink; */
+  }
+</style>
+<script>
+  var abimassiivVoitjaAsukohat = [];
+  function sGameNr(tabelid, rida, voor, gamenr, voitjaasukoht) {
+    let elementName = 'sisu_' + tabelid + 'r' + rida + 'v' + voor;
+    let elementdom = document.getElementById(elementName);
+    elementdom.outerHTML = '<span class="mangunumber">' + gamenr + '</span>';
+
+    let p1asukoht = (rida - Math.max(1, 2 * (parseInt(voor))));
+    let p2asukoht = (rida + Math.max(1, 2 * (parseInt(voor))));
+
+    let player1cell = document.getElementById('sisu_' + tabelid + 'r' + p1asukoht + 'v' + voor);
+    let player2cell = document.getElementById('sisu_' + tabelid + 'r' + p2asukoht + 'v' + voor);
+    player1cell.outerHTML = '<span class="mangija" id="player_' + gamenr + '_1">*</span>';
+    player2cell.outerHTML = '<span class="mangija" id="player_' + gamenr + '_2">*</span>';
+
+    // tulemuse lahter
+    if (voor > 0) {
+      let player1celltulemus = document.getElementById('sisu_' + tabelid + 'r' + (p1asukoht + 1) + 'v' + voor);
+      let player2celltulemus = document.getElementById('sisu_' + tabelid + 'r' + (p2asukoht + 1) + 'v' + voor);
+      player1celltulemus.outerHTML = '<span class="tulemus" id="player_' + gamenr + '_1tulemus"></span>';
+      player2celltulemus.outerHTML = '<span class="tulemus" id="player_' + gamenr + '_2tulemus"></span>';
+    }
+
+    for (let i = p1asukoht + 1; i <= p2asukoht; i++) {
+      let cell = document.getElementById(tabelid + 'r' + i + 'v' + voor);
+      cell.classList.add("pystjoon");
+    }
+
+    // pane kirja, mis lahtrisse lأ¤heb võitja
+    abimassiivVoitjaAsukohat[gamenr] = voitjaasukoht;
+  }
+
+  function paneMangijadKirja(gamenr, mangijanimi1, mangijanimi2, voitjanimi, tulemus) {
+    if (mangijanimi1 && mangijanimi1.length > 0) {
+      let player1 = document.getElementById('player_' + gamenr + '_1');
+      player1.outerHTML = '<span class="mangija" id="player_' + gamenr + '_1">' + mangijanimi1 + '</span>';
+    }
+    if (mangijanimi2 && mangijanimi2.length > 0) {
+      let player2 = document.getElementById('player_' + gamenr + '_2');
+      player2.outerHTML = '<span class="mangija" id="player_' + gamenr + '_2">' + mangijanimi2 + '</span>';
+    }
+    // pane kirja võitjaأ
+    if (voitjanimi && voitjanimi.length > 0) {
+      let voitjaElementId = 'player_' + abimassiivVoitjaAsukohat[gamenr];
+      let voitjaElement = document.getElementById(voitjaElementId);
+      voitjaElement.outerHTML = '<span class="mangija" id="' + voitjaElementId + '">' + voitjanimi + '</span>';
+      if (tulemus && tulemus.length > 0) {
+        let tulemusElementId = 'player_' + abimassiivVoitjaAsukohat[gamenr] + 'tulemus';
+        let tulemusElement = document.getElementById(tulemusElementId);
+        tulemusElement.outerHTML = '<span class="tulemus" id="' + tulemusElementId + '">' + tulemus + '</span>';
+      }
+    }
+  }
+
+  function paneYldVoitjaKirja(tableid, mangijanimi) {
+    let player = document.getElementById('player_esikoht' + tableid);
+    player.outerHTML = '<span class="mangija">' + mangijanimi + '</span>';
+  }
+
+  function ready(callbackFunction) {
+    if (document.readyState != 'loading')
+      callbackFunction(event)
+    else
+      document.addEventListener("DOMContentLoaded", callbackFunction)
+  }
+
+  function setTableStructurePlussring(tid) {
+    // voor 1 mأ¤ngunumbrid
+    sGameNr(tid, 1, 0, '101', '109_1');
+    sGameNr(tid, 5, 0, '102', '109_2');
+    sGameNr(tid, 9, 0, '103', '110_1');
+    sGameNr(tid, 13, 0, '104', '110_2');
+    sGameNr(tid, 17, 0, '105', '111_1');
+    sGameNr(tid, 21, 0, '106', '111_2');
+    sGameNr(tid, 25, 0, '107', '112_1');
+    sGameNr(tid, 29, 0, '108', '112_2');
+
+    // voor 2 mأ¤ngunumbrid
+    sGameNr(tid, 3, 1, '109', '117_1');
+    sGameNr(tid, 11, 1, '110', '117_2');
+    sGameNr(tid, 19, 1, '111', '118_1');
+    sGameNr(tid, 27, 1, '112', '118_2');
+
+    // voor 3 mأ¤ngunumbrid
+    sGameNr(tid, 7, 2, '117', '131_1');
+    sGameNr(tid, 23, 2, '118', '131_2');
+
+    // voor 4 mأ¤ngunumbrid
+    sGameNr(tid, 15, 3, '131', 'esikoht' + tid);
+
+    let voitja = document.getElementById('sisu_' + tid + 'r15v4');
+    voitja.outerHTML = '<span class="mangija" id="player_esikoht' + tid + '">võitja</span>';
+    let voitjatulemus = document.getElementById('sisu_' + tid + 'r16v4');
+    voitjatulemus.outerHTML = '<span class="tulemus" id="player_esikoht' + tid + 'tulemus"></span>';
+  }
+
+  function setTableStructureMiinusring(tid) {
+    // I vooru kaotajad
+
+    // voor 2 mأ¤ngunumbrid
+    sGameNr(tid, 3, 1, '113', '119_1');
+    sGameNr(tid, 11, 1, '114', '119_2');
+    sGameNr(tid, 19, 1, '115', '120_1');
+    sGameNr(tid, 27, 1, '116', '120_2');
+
+    // voor 3 mأ¤ngunumbrid
+    sGameNr(tid, 7, 2, '119', '125_1');
+    sGameNr(tid, 23, 2, '120', '125_2');
+
+    // voor 4 mأ¤ngunumbrid
+    sGameNr(tid, 15, 3, '125', 'esikoht' + tid);
+
+    let voitja = document.getElementById('sisu_' + tid + 'r15v4');
+    voitja.outerHTML = '<span class="mangija" id="player_esikoht' + tid + '">võitja</span>';
+    let voitjatulemus = document.getElementById('sisu_' + tid + 'r16v4');
+    voitjatulemus.outerHTML = '<span class="tulemus" id="player_esikoht' + tid + 'tulemus">võitja</span>';
+  }
+
+  function kujundaIlusTabel() {
+    // td elementidele raamide tأµmbamise abi
+    boxes = document.querySelectorAll('.mangija');
+    [].forEach.call(boxes, function (p) {
+      let cell = p.parentNode;
+      cell.classList.add("mangijaCell");
+    });
+
+    boxes = document.querySelectorAll('.tulemus');
+    [].forEach.call(boxes, function (p) {
+      let cell = p.parentNode;
+      cell.classList.add("tulemusCell");
+    });
+
+    boxes = document.querySelectorAll('.mangunumber');
+    [].forEach.call(boxes, function (p) {
+      let cell = p.parentNode;
+      cell.classList.add("mangunumberCell");
+    });
+  }
+
+  function paneMangijad() {
+    // Nr
+    // Voistleja1
+    // Voistleja2
+    // Laud
+    // Voitja
+    // Tulemus
+    gamedata.forEach(onegame => {
+      paneMangijadKirja(
+        onegame.round, // onegame.Nr,
+        onegame.Voistleja1,
+        onegame.Voistleja2,
+        onegame.Voitja,
+        onegame.score // onegame.Tulemus
+      );
+    });
+  }
+
+  function teeTabeliV6restik(tableid, suurusx, suurusy) {
+    let frag = document.createElement('table');
+    frag.classList.add('tournamenttable');
+    for (let i = 0; i < suurusx; i++) {
+      let curtr = document.createElement('tr');
+      for (let j = 0; j < suurusy; j++) {
+        let idname = tableid + 'r' + i + 'v' + j;
+        curtd = document.createElement('td');
+        curtd.classList.add('tttd');
+        curtd.setAttribute('id', idname);
+        sisu = document.createElement('span');
+        sisu.classList.add('ridaindex');
+        sisu.textContent = idname;
+        sisu2 = document.createElement('span');
+        sisu2.setAttribute('id', 'sisu_' + idname);
+        curtd.appendChild(sisu);
+        curtd.appendChild(sisu2);
+        curtr.appendChild(curtd);
+      }
+      frag.appendChild(curtr);
+    }
+    let elementkuhupannatabel = document.getElementById(tableid);
+    elementkuhupannatabel.appendChild(frag);
+  }
+
+  ready(event => {
+
+    teeTabeliV6restik("tabel1", 31, 5);
+    setTableStructurePlussring("tabel1");
+
+    teeTabeliV6restik("tabel2", 31, 5);
+    setTableStructureMiinusring("tabel2");
+
+    kujundaIlusTabel();
+
+    paneMangijad();
+
+  })
+</script>
+
+<body class="d-flex flex-column h-100">
 
   <%- include('partials/header'); %>
 
     <%- include('partials/navcompetitions'); %>
 
-      <div class="container">
-        <h2 class="text-center my-2">Võistlustabel</h2>
-      </div>
+      <main role="main" class="flex-shrink-0">
 
-      <div class="container-fluid my-0">
+        <div class="container">
+          <h2 class="text-center my-2">Võistlustabel</h2>
+        </div>
 
-       <pre>
-       info
-       start
-       ---------------------------------------
-                <%= competitiongames %>
-       </pre>
-      </div>
+        <div class="container-fluid my-0">
+
+          <span class='pealkiri'>Plussring</span>
+          <div id="tabel1"></div>
+          <span class='pealkiri'>Miinusring</span>
+          <div id="tabel2"></div>
+
+        </div>
+      </main>
 
       <%- include('partials/footer'); %>
 
-	<script>
-		var gamedata=JSON.parse('<%- competitiongames %>');
-	</script>
+        <script>
+          var gamedata = JSON.parse('<%- competitiongames %>');
+          // test data:
+          var gamedataTest = JSON.parse(
+            '[' +
+            ' {"Nr":"101","Voistleja1":"Kustav Korjus","Voistleja2":"Heiki Valk"     ,"Laud":"x","Voitja":"Kustav Korjus","Tulemus":"3:0" },' +
+            ' {"Nr":"102","Voistleja1":"Lembit Meri"  ,"Voistleja2":"Kaljo Vesik"    ,"Laud":"x","Voitja":"Kaljo Vesik"  ,"Tulemus":"3:0" },' +
+            ' {"Nr":"103","Voistleja1":"Heino Kass"   ,"Voistleja2":"Aare Aavik"     ,"Laud":"x","Voitja":"Heino Kass"   ,"Tulemus":"3:0" },' +
+            ' {"Nr":"104","Voistleja1":"Gert Opik"    ,"Voistleja2":"Kaupo Opik"     ,"Laud":"x","Voitja":"Kaupo Opik"   ,"Tulemus":"3:0" },' +
+            ' {"Nr":"109","Voistleja1":"Kustav Korjus","Voistleja2":"Kaljo Vesik"    ,"Laud":"x","Voitja":"Kaljo Vesik"  ,"Tulemus":"3:0" },' +
+            ' {"Nr":"131","Voistleja1":"Finalist 1",   "Voistleja2":"Finalist 2"     ,"Laud":"x","Voitja":"Finalist 1"   ,"Tulemus":"3:0" },' +
+            ' {"Nr":"107","Voistleja1":"Finalist 1",   "Voistleja2":""     ,"Laud":"x","Voitja":""   ,"Tulemus":"" },' +
+            ' {"Nr":"125","Voistleja1":"Kaotaja 1",    "Voistleja2":"Kaotaja 2"      ,"Laud":"x","Voitja":"Kaotaja 2"    ,"Tulemus":"3:0" },' +
+            ' {"Nr":"105","Voistleja1":"Aigar Aasmae" ,"Voistleja2":"Aleksander Part","Laud":"x","Voitja":"Aigar Aasmae" ,"Tulemus":"3:0" }' +
+            ']'
+          );
+        </script>
 
 </body>
 

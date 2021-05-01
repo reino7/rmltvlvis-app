@@ -223,7 +223,7 @@ app.get('/competitions/:id/info', function (req, res) {
 
 /* GET Competitions PLACEMENT home page with ID. */
 app.get('/competitions/:id/placement', function (req, res) {
-  console.log('Req.params.ID: ' + req.params.id)
+
   let competitionID = req.params.id;
   let query = "SELECT * FROM `competitions` WHERE id = '" + competitionID + "' ";
 
@@ -243,7 +243,7 @@ app.get('/competitions/:id/placement', function (req, res) {
 
 /* GET Competitions COMPETITIONTABLE home page with ID. */
 app.get('/competitions/:id/competitiontable', function (req, res) {
-  console.log('Req.params.ID: ' + req.params.id)
+
   let competitionID = req.params.id;
   let query = "SELECT * FROM `competitions` WHERE id = '" + competitionID + "' ";
 
@@ -263,8 +263,20 @@ app.get('/competitions/:id/competitiontable', function (req, res) {
 
 
 app.get('/competitions/:id/competitiontablex', function (req, res) {
+
   let competitionID = req.params.id;
-  let query = "SELECT * FROM `competitions` WHERE id = '" + competitionID + "' ";
+  let query = 
+	"SELECT * FROM `competitions` WHERE id = '" + competitionID + "'; " +          // query1
+	"select game.*, "+                                                             // query2
+	"concat(player1data.FIRSTNAME,' ',player1data.FAMNAME) as Voistleja1, "+
+	"concat(player2data.FIRSTNAME,' ',player2data.FAMNAME) as Voistleja2, "+
+	"concat(winnerdata.FIRSTNAME,' ',winnerdata.FAMNAME) as Voitja "+
+	"from "+
+	"game "+
+	"left join reiting as player1data on game.player1=player1data.PERSONID "+
+	"left join reiting as player2data on game.player2=player2data.PERSONID "+
+	"left join reiting as winnerdata on game.winner=winnerdata.PERSONID "+
+	"where competitionid=" + competitionID + ";";
 
   dbConnection.query(query, (err, results) => {
     if (err) {
@@ -273,7 +285,7 @@ app.get('/competitions/:id/competitiontablex', function (req, res) {
 
     res.render('competitiontablecompetitionx', {
       competitionsinfo: results[0],
-      competitiongames: JSON.stringify(results)
+      competitiongames: JSON.stringify(results[1])
     });
 
   });
@@ -282,7 +294,7 @@ app.get('/competitions/:id/competitiontablex', function (req, res) {
 
 /* GET Competitions GAMES home page with ID. */
 app.get('/competitions/:id/games', function (req, res) {
-  console.log('Req.params.ID: ' + req.params.id)
+
   let competitionID = req.params.id;
   let query = "SELECT * FROM `competitions` WHERE id = '" + competitionID + "' ";
 
@@ -302,7 +314,7 @@ app.get('/competitions/:id/games', function (req, res) {
 
 /* GET Competitions RESULTS home page with ID. */
 app.get('/competitions/:id/results', function (req, res) {
-  console.log('Req.params.ID: ' + req.params.id)
+
   let competitionID = req.params.id;
   let query = "SELECT * FROM `competitions` WHERE id = '" + competitionID + "' ";
 
@@ -322,7 +334,7 @@ app.get('/competitions/:id/results', function (req, res) {
 
 /* GET Competitions AWARDS home page with ID. */
 app.get('/competitions/:id/awards', function (req, res) {
-  console.log('Req.params.ID: ' + req.params.id)
+
   let competitionID = req.params.id;
   let query = "SELECT * FROM `competitions` WHERE id = '" + competitionID + "' ";
 
