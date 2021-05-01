@@ -8,7 +8,7 @@ const databaseOptions = require('../config/db.config');
 // Create connection to db
 var dbConnection = mysql.createConnection(databaseOptions);
 
-/* GET home page. */
+/* GET addcompetition home page. */
 router.get('/', function (req, res, next) {
 
   // res.render('competitions', { title: 'competitions' });
@@ -23,9 +23,10 @@ router.get('/', function (req, res, next) {
 
 });
 
-/* POST home page. */
+/* POST addcompetition home page. */
 router.post('/', function (req, res) {
 
+  let competitionID = req.params.id;
   let competitionsdateForm = req.body.competitionsdateForm;
   let competitionstimeForm = req.body.competitionstimeForm;
   let competitionsnameForm = req.body.competitionsnameForm;
@@ -42,12 +43,11 @@ router.post('/', function (req, res) {
   // values to be inserted
   let values = [[competitionsdateForm, competitionstimeForm, competitionsnameForm, locationForm, organizerForm, organisercontactForm, refereeForm, refereecontactForm, participationfeeForm]];
 
-
   dbConnection.query(sql, [values], (err, results) => {
 
     // dbConnection.end();
     if (err) throw err;
-    res.redirect('/competitions');
+    res.redirect('/competitions' + competitionID + '/placement');
     
   });
 

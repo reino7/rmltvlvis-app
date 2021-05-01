@@ -186,8 +186,6 @@ app.get('/competitions/:id/registration', function (req, res) {
   // let query2 = "SELECT * FROM reiting ORDER BY RATEORDER = 0 ASC, RATEORDER LIMIT 1000;";
 
   dbConnection.query(query, (err, results) => {
-    // console.log(results[0]);
-    // console.log(results[1]);
     
     if (err) {
       return res.status(500).send(err);
@@ -232,7 +230,7 @@ app.get('/competitions/:id/placement', function (req, res) {
     if (err) {
       return res.status(500).send(err);
     }
-    console.log(results);
+
     res.render('placementcompetition', {
       competitionsinfo: results[0]
       //title: 'games'
@@ -248,7 +246,7 @@ app.get('/competitions/:id/competitiontable', function (req, res) {
   let query = "SELECT * FROM `competitions` WHERE id = '" + competitionID + "' ";
 
   dbConnection.query(query, (err, results) => {
-    console.log('Results here:' + results);
+
     if (err) {
       return res.status(500).send(err);
     }
@@ -299,7 +297,7 @@ app.get('/competitions/:id/games', function (req, res) {
   let query = "SELECT * FROM `competitions` WHERE id = '" + competitionID + "' ";
 
   dbConnection.query(query, (err, results) => {
-    console.log('Results here:' + results);
+
     if (err) {
       return res.status(500).send(err);
     }
@@ -319,7 +317,7 @@ app.get('/competitions/:id/results', function (req, res) {
   let query = "SELECT * FROM `competitions` WHERE id = '" + competitionID + "' ";
 
   dbConnection.query(query, (err, results) => {
-    console.log('Results here:' + results);
+
     if (err) {
       return res.status(500).send(err);
     }
@@ -339,7 +337,7 @@ app.get('/competitions/:id/awards', function (req, res) {
   let query = "SELECT * FROM `competitions` WHERE id = '" + competitionID + "' ";
 
   dbConnection.query(query, (err, results) => {
-    console.log('Results here:' + results);
+
     if (err) {
       return res.status(500).send(err);
     }
