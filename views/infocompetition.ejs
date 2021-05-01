@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="et">
+<html lang="et"><html lang="et" class="h-100">
 
 <head>
   <%- include('partials/headforedit'); %>
 
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
 
   <%- include('partials/header'); %>
 
@@ -14,6 +14,7 @@
 
   <% if (competitionsinfo) { %>
 
+  <main role="main" class="flex-shrink-0">
     <div class="container my-5">
 
       <h2 class="text-center my-4">Võistluse info</h2>
@@ -43,6 +44,7 @@
         </div>
       </div>
     </div>
+  </main>
 
     <% } %>
 

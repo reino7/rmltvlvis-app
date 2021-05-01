@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="et">
+<html lang="et" class="h-100">
 
 <head>
   <%- include('partials/headforedit'); %>
 
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
 
   <%- include('partials/header'); %>
 
-    <%- include('partials/navcompetitions'); %>
+  <%- include('partials/navcompetitions'); %>
+  
+  <main role="main" class="flex-shrink-0">
 
       <div class="container">
         <h2 class="text-center my-2">Võistlustabel</h2>
@@ -963,8 +965,9 @@
           </tbody>
         </table>
       </div>
+    </main>
 
-      <%- include('partials/footer'); %>
+  <%- include('partials/footer'); %>
 
 </body>
 

@@ -114,7 +114,6 @@ app.get('/competitions/:id/registration', function (req, res) {
   });
 });
 
-
 /* GET Competitions INFO home page with ID. */
 app.get('/competitions/:id/info', function (req, res) {
 
@@ -173,6 +172,25 @@ app.get('/competitions/:id/competitiontable', function (req, res) {
 
   });
 });
+
+
+app.get('/competitions/:id/competitiontablex', function (req, res) {
+  let competitionID = req.params.id;
+  let query = "SELECT * FROM `competitions` WHERE id = '" + competitionID + "' ";
+
+  dbConnection.query(query, (err, results) => {
+    if (err) {
+      return res.status(500).send(err);
+    }
+
+    res.render('competitiontablecompetitionx', {
+      competitionsinfo: results[0],
+      competitiongames: JSON.stringify(results)
+    });
+
+  });
+});
+
 
 /* GET Competitions GAMES home page with ID. */
 app.get('/competitions/:id/games', function (req, res) {
@@ -234,10 +252,11 @@ app.get('/competitions/:id/awards', function (req, res) {
   });
 });
 
+
 // Custom route for handling all invalid routes
-app.get('*', function (req, res) {
-  res.sendFile(__dirname + '/public/error_pages/404.html');
-});
+// app.get('*', function (req, res) {
+//   res.sendFile(__dirname + '/public/error_pages/404.html');
+// });
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,249 +1,251 @@
 <!DOCTYPE html>
-<html lang="et">
+<html lang="et" class="h-100">
 
 <head>
   <%- include('partials/headforedit'); %>
 
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
 
   <%- include('partials/header'); %>
 
   <%- include('partials/navcompetitions'); %>
 
-  <div class="container my-5">
-    <h2 class="text-center my-4">Mängud</h2>
+  <main role="main" class="flex-shrink-0">
+    <div class="container my-5">
+      <h2 class="text-center my-4">Mängud</h2>
 
-    <table class="table table-hover table-bordered" id="reitinguNimekiri">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col" class="text-center">Nr</th>
-          <th scope="col">Võistleja 1</th>
-          <th scope="col">Võistleja 2</th>
-          <th scope="col" class="text-center">Laud</th>
-          <th scope="col">Võitja</th>
-          <th scope="col" class="text-center">Tulemus</th>
-          <th scope="col" class="text-center">Toimingud</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th class="text-center">101</th>
-          <td>Kustav Korjus</td>
-          <td>Heiki Valk</td>
-          <td class="text-center">
-            <select name="compTables" id="compTables" disabled>
-              <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
-              <option value="1">&nbsp;&nbsp;1&nbsp;&nbsp;</option>
-              <option value="2">&nbsp;&nbsp;2&nbsp;&nbsp;</option>
-              <option value="3">&nbsp;&nbsp;3&nbsp;&nbsp;</option>
-              <option value="4">&nbsp;&nbsp;4&nbsp;&nbsp;</option>
-              <option value="5">&nbsp;&nbsp;5&nbsp;&nbsp;</option>
-            </select>
-          </td>
-          <td>
-            <select name="compWinner" id="compWinner" class="w-100"  placeholder="Disabled input" disabled>
-              <option value="0" selected>&nbsp;&nbsp;Heiki Valk&nbsp;&nbsp;</option>
-              <option value="1">&nbsp;&nbsp;Kustav Korjus&nbsp;&nbsp;</option>
-              <option value="2">&nbsp;&nbsp;Heiki Valk&nbsp;&nbsp;</option>
-            </select>
-          </td>
-          <td class="text-center">
-            <select name="compWinnerScore" id="compWinnerScore" disabled>
-              <option value="0">&nbsp;&nbsp;3:1&nbsp;&nbsp;</option>
-              <option value="1">&nbsp;&nbsp;3:0&nbsp;&nbsp;</option>
-              <option value="2">&nbsp;&nbsp;3:1&nbsp;&nbsp;</option>
-              <option value="3">&nbsp;&nbsp;3:2&nbsp;&nbsp;</option>
-            </select>
-          </td>
-          <td class="text-center">
-            <ul class="m-0 p-0">
-              <li class="list-inline-item">
-                <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
-                  data-placement="top" title="Muuda"><i class="fa fa-edit"></i></button>
-              </li>
-              <li class="list-inline-item">
-                <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
-                  data-placement="top" title="Salvesta"><i class="fas fa-save"></i></i></button>
-              </li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <th class="text-center">102</th>
-          <td>Lembit Meri</td>
-          <td>Kaljo Vesik
-          </td>
-          <td class="text-center">
-            <select name="compTables" id="compTables">
-              <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
-              <option value="1">&nbsp;&nbsp;1&nbsp;&nbsp;</option>
-              <option value="2">&nbsp;&nbsp;2&nbsp;&nbsp;</option>
-              <option value="3">&nbsp;&nbsp;3&nbsp;&nbsp;</option>
-              <option value="4">&nbsp;&nbsp;4&nbsp;&nbsp;</option>
-              <option value="5">&nbsp;&nbsp;5&nbsp;&nbsp;</option>
-            </select>
-          </td>
-          <td>
-            <select name="compWinner" id="compWinner" class="w-100">
-              <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
-              <option value="1">&nbsp;&nbsp;Lembit Meri&nbsp;&nbsp;</option>
-              <option value="2">&nbsp;&nbsp;Kaljo Vesik&nbsp;&nbsp;</option>
-            </select>
-          </td>
-          <td class="text-center">
-            <select name="compWinnerScore" id="compWinnerScore">
-              <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;</option>
-              <option value="1">&nbsp;&nbsp;3:0&nbsp;&nbsp;</option>
-              <option value="2">&nbsp;&nbsp;3:1&nbsp;&nbsp;</option>
-              <option value="3">&nbsp;&nbsp;3:2&nbsp;&nbsp;</option>
-            </select>
-          </td>
-          <td class="text-center">
-            <ul class="m-0 p-0">
-              <li class="list-inline-item">
-                <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
-                  data-placement="top" title="Muuda"><i class="fa fa-edit"></i></button>
-              </li>
-              <li class="list-inline-item">
-                <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
-                  data-placement="top" title="Salvesta"><i class="fas fa-save"></i></i></button>
-              </li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <th class="text-center">103</th>
-          <td>Heino Kass</td>
-          <td>Aare Aavik</td>
-          <td class="text-center">
-            <select name="compTables" id="compTables">
-              <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
-              <option value="1">&nbsp;&nbsp;1&nbsp;&nbsp;</option>
-              <option value="2">&nbsp;&nbsp;2&nbsp;&nbsp;</option>
-              <option value="3">&nbsp;&nbsp;3&nbsp;&nbsp;</option>
-              <option value="4">&nbsp;&nbsp;4&nbsp;&nbsp;</option>
-              <option value="5">&nbsp;&nbsp;5&nbsp;&nbsp;</option>
-            </select>
-          </td>
-          <td>
-            <select name="compWinner" id="compWinner" class="w-100">
-              <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
-              <option value="1">&nbsp;&nbsp;Heino Kass&nbsp;&nbsp;</option>
-              <option value="2">&nbsp;&nbsp;Aare Aavik&nbsp;&nbsp;</option>
-            </select>
-          </td>
-          <td class="text-center">
-            <select name="compWinnerScore" id="compWinnerScore">
-              <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;</option>
-              <option value="1">&nbsp;&nbsp;3:0&nbsp;&nbsp;</option>
-              <option value="2">&nbsp;&nbsp;3:1&nbsp;&nbsp;</option>
-              <option value="3">&nbsp;&nbsp;3:2&nbsp;&nbsp;</option>
-            </select>
-          </td>
-          <td class="text-center">
-            <ul class="m-0 p-0">
-              <li class="list-inline-item">
-                <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
-                  data-placement="top" title="Muuda"><i class="fa fa-edit"></i></button>
-              </li>
-              <li class="list-inline-item">
-                <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
-                  data-placement="top" title="Salvesta"><i class="fas fa-save"></i></i></button>
-              </li>
-            </ul>
-          </td>
+      <table class="table table-hover table-bordered" id="reitinguNimekiri">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="text-center">Nr</th>
+            <th scope="col">Võistleja 1</th>
+            <th scope="col">Võistleja 2</th>
+            <th scope="col" class="text-center">Laud</th>
+            <th scope="col">Võitja</th>
+            <th scope="col" class="text-center">Tulemus</th>
+            <th scope="col" class="text-center">Toimingud</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="text-center">101</th>
+            <td>Kustav Korjus</td>
+            <td>Heiki Valk</td>
+            <td class="text-center">
+              <select name="compTables" id="compTables" disabled>
+                <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value="1">&nbsp;&nbsp;1&nbsp;&nbsp;</option>
+                <option value="2">&nbsp;&nbsp;2&nbsp;&nbsp;</option>
+                <option value="3">&nbsp;&nbsp;3&nbsp;&nbsp;</option>
+                <option value="4">&nbsp;&nbsp;4&nbsp;&nbsp;</option>
+                <option value="5">&nbsp;&nbsp;5&nbsp;&nbsp;</option>
+              </select>
+            </td>
+            <td>
+              <select name="compWinner" id="compWinner" class="w-100"  placeholder="Disabled input" disabled>
+                <option value="0" selected>&nbsp;&nbsp;Heiki Valk&nbsp;&nbsp;</option>
+                <option value="1">&nbsp;&nbsp;Kustav Korjus&nbsp;&nbsp;</option>
+                <option value="2">&nbsp;&nbsp;Heiki Valk&nbsp;&nbsp;</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <select name="compWinnerScore" id="compWinnerScore" disabled>
+                <option value="0">&nbsp;&nbsp;3:1&nbsp;&nbsp;</option>
+                <option value="1">&nbsp;&nbsp;3:0&nbsp;&nbsp;</option>
+                <option value="2">&nbsp;&nbsp;3:1&nbsp;&nbsp;</option>
+                <option value="3">&nbsp;&nbsp;3:2&nbsp;&nbsp;</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <ul class="m-0 p-0">
+                <li class="list-inline-item">
+                  <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
+                    data-placement="top" title="Muuda"><i class="fa fa-edit"></i></button>
+                </li>
+                <li class="list-inline-item">
+                  <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
+                    data-placement="top" title="Salvesta"><i class="fas fa-save"></i></i></button>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th class="text-center">102</th>
+            <td>Lembit Meri</td>
+            <td>Kaljo Vesik
+            </td>
+            <td class="text-center">
+              <select name="compTables" id="compTables">
+                <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value="1">&nbsp;&nbsp;1&nbsp;&nbsp;</option>
+                <option value="2">&nbsp;&nbsp;2&nbsp;&nbsp;</option>
+                <option value="3">&nbsp;&nbsp;3&nbsp;&nbsp;</option>
+                <option value="4">&nbsp;&nbsp;4&nbsp;&nbsp;</option>
+                <option value="5">&nbsp;&nbsp;5&nbsp;&nbsp;</option>
+              </select>
+            </td>
+            <td>
+              <select name="compWinner" id="compWinner" class="w-100">
+                <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value="1">&nbsp;&nbsp;Lembit Meri&nbsp;&nbsp;</option>
+                <option value="2">&nbsp;&nbsp;Kaljo Vesik&nbsp;&nbsp;</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <select name="compWinnerScore" id="compWinnerScore">
+                <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value="1">&nbsp;&nbsp;3:0&nbsp;&nbsp;</option>
+                <option value="2">&nbsp;&nbsp;3:1&nbsp;&nbsp;</option>
+                <option value="3">&nbsp;&nbsp;3:2&nbsp;&nbsp;</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <ul class="m-0 p-0">
+                <li class="list-inline-item">
+                  <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
+                    data-placement="top" title="Muuda"><i class="fa fa-edit"></i></button>
+                </li>
+                <li class="list-inline-item">
+                  <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
+                    data-placement="top" title="Salvesta"><i class="fas fa-save"></i></i></button>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th class="text-center">103</th>
+            <td>Heino Kass</td>
+            <td>Aare Aavik</td>
+            <td class="text-center">
+              <select name="compTables" id="compTables">
+                <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value="1">&nbsp;&nbsp;1&nbsp;&nbsp;</option>
+                <option value="2">&nbsp;&nbsp;2&nbsp;&nbsp;</option>
+                <option value="3">&nbsp;&nbsp;3&nbsp;&nbsp;</option>
+                <option value="4">&nbsp;&nbsp;4&nbsp;&nbsp;</option>
+                <option value="5">&nbsp;&nbsp;5&nbsp;&nbsp;</option>
+              </select>
+            </td>
+            <td>
+              <select name="compWinner" id="compWinner" class="w-100">
+                <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value="1">&nbsp;&nbsp;Heino Kass&nbsp;&nbsp;</option>
+                <option value="2">&nbsp;&nbsp;Aare Aavik&nbsp;&nbsp;</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <select name="compWinnerScore" id="compWinnerScore">
+                <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value="1">&nbsp;&nbsp;3:0&nbsp;&nbsp;</option>
+                <option value="2">&nbsp;&nbsp;3:1&nbsp;&nbsp;</option>
+                <option value="3">&nbsp;&nbsp;3:2&nbsp;&nbsp;</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <ul class="m-0 p-0">
+                <li class="list-inline-item">
+                  <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
+                    data-placement="top" title="Muuda"><i class="fa fa-edit"></i></button>
+                </li>
+                <li class="list-inline-item">
+                  <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
+                    data-placement="top" title="Salvesta"><i class="fas fa-save"></i></i></button>
+                </li>
+              </ul>
+            </td>
 
-        </tr>
-        <tr>
-          <th class="text-center">104</th>
-          <td>Gert Opik</td>
-          <td>Kaupo Opik</td>
-          <td class="text-center">
-            <select name="compTables" id="compTables">
-              <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
-              <option value="1">&nbsp;&nbsp;1&nbsp;&nbsp;</option>
-              <option value="2">&nbsp;&nbsp;2&nbsp;&nbsp;</option>
-              <option value="3">&nbsp;&nbsp;3&nbsp;&nbsp;</option>
-              <option value="4">&nbsp;&nbsp;4&nbsp;&nbsp;</option>
-              <option value="5">&nbsp;&nbsp;5&nbsp;&nbsp;</option>
-            </select>
-          </td>
-          <td>
-            <select name="compWinner" id="compWinner" class="w-100">
-              <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
-              <option value="1">&nbsp;&nbsp;Gert Opik&nbsp;&nbsp;</option>
-              <option value="2">&nbsp;&nbsp;Kaupo Opik&nbsp;&nbsp;</option>
-            </select>
-          </td>
-          <td class="text-center">
-            <select name="compWinnerScore" id="compWinnerScore">
-              <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;</option>
-              <option value="1">&nbsp;&nbsp;3:0&nbsp;&nbsp;</option>
-              <option value="2">&nbsp;&nbsp;3:1&nbsp;&nbsp;</option>
-              <option value="3">&nbsp;&nbsp;3:2&nbsp;&nbsp;</option>
-            </select>
-          </td>
-          <td class="text-center">
-            <ul class="m-0 p-0">
-              <li class="list-inline-item">
-                <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
-                  data-placement="top" title="Muuda"><i class="fa fa-edit"></i></button>
-              </li>
-              <li class="list-inline-item">
-                <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
-                  data-placement="top" title="Salvesta"><i class="fas fa-save"></i></i></button>
-              </li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <th class="text-center">105</th>
-          <td>Aigar Aasmäe</td>
-          <td>Aleksander Part</td>
-          <td class="text-center">
-            <select name="compTables" id="compTables">
-              <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
-              <option value="1">&nbsp;&nbsp;1&nbsp;&nbsp;</option>
-              <option value="2">&nbsp;&nbsp;2&nbsp;&nbsp;</option>
-              <option value="3">&nbsp;&nbsp;3&nbsp;&nbsp;</option>
-              <option value="4">&nbsp;&nbsp;4&nbsp;&nbsp;</option>
-              <option value="5">&nbsp;&nbsp;5&nbsp;&nbsp;</option>
-            </select>
-          </td>
-          <td>
-            <select name="compWinner" id="compWinner" class="w-100">
-              <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
-              <option value="1">&nbsp;&nbsp;Aigar Aasmäe&nbsp;&nbsp;</option>
-              <option value="2">&nbsp;&nbsp;Aleksander Part&nbsp;&nbsp;</option>
-            </select>
-          </td>
-          <td class="text-center">
-            <select name="compWinnerScore" id="compWinnerScore">
-              <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;</option>
-              <option value="1">&nbsp;&nbsp;3:0&nbsp;&nbsp;</option>
-              <option value="2">&nbsp;&nbsp;3:1&nbsp;&nbsp;</option>
-              <option value="3">&nbsp;&nbsp;3:2&nbsp;&nbsp;</option>
-            </select>
-          </td>
-          <td class="text-center">
-            <ul class="m-0 p-0">
-              <li class="list-inline-item">
-                <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
-                  data-placement="top" title="Muuda"><i class="fa fa-edit"></i></button>
-              </li>
-              <li class="list-inline-item">
-                <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
-                  data-placement="top" title="Salvesta"><i class="fas fa-save"></i></i></button>
-              </li>
-            </ul>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </tr>
+          <tr>
+            <th class="text-center">104</th>
+            <td>Gert Opik</td>
+            <td>Kaupo Opik</td>
+            <td class="text-center">
+              <select name="compTables" id="compTables">
+                <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value="1">&nbsp;&nbsp;1&nbsp;&nbsp;</option>
+                <option value="2">&nbsp;&nbsp;2&nbsp;&nbsp;</option>
+                <option value="3">&nbsp;&nbsp;3&nbsp;&nbsp;</option>
+                <option value="4">&nbsp;&nbsp;4&nbsp;&nbsp;</option>
+                <option value="5">&nbsp;&nbsp;5&nbsp;&nbsp;</option>
+              </select>
+            </td>
+            <td>
+              <select name="compWinner" id="compWinner" class="w-100">
+                <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value="1">&nbsp;&nbsp;Gert Opik&nbsp;&nbsp;</option>
+                <option value="2">&nbsp;&nbsp;Kaupo Opik&nbsp;&nbsp;</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <select name="compWinnerScore" id="compWinnerScore">
+                <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value="1">&nbsp;&nbsp;3:0&nbsp;&nbsp;</option>
+                <option value="2">&nbsp;&nbsp;3:1&nbsp;&nbsp;</option>
+                <option value="3">&nbsp;&nbsp;3:2&nbsp;&nbsp;</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <ul class="m-0 p-0">
+                <li class="list-inline-item">
+                  <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
+                    data-placement="top" title="Muuda"><i class="fa fa-edit"></i></button>
+                </li>
+                <li class="list-inline-item">
+                  <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
+                    data-placement="top" title="Salvesta"><i class="fas fa-save"></i></i></button>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th class="text-center">105</th>
+            <td>Aigar Aasmäe</td>
+            <td>Aleksander Part</td>
+            <td class="text-center">
+              <select name="compTables" id="compTables">
+                <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value="1">&nbsp;&nbsp;1&nbsp;&nbsp;</option>
+                <option value="2">&nbsp;&nbsp;2&nbsp;&nbsp;</option>
+                <option value="3">&nbsp;&nbsp;3&nbsp;&nbsp;</option>
+                <option value="4">&nbsp;&nbsp;4&nbsp;&nbsp;</option>
+                <option value="5">&nbsp;&nbsp;5&nbsp;&nbsp;</option>
+              </select>
+            </td>
+            <td>
+              <select name="compWinner" id="compWinner" class="w-100">
+                <option value="0" selected>&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value="1">&nbsp;&nbsp;Aigar Aasmäe&nbsp;&nbsp;</option>
+                <option value="2">&nbsp;&nbsp;Aleksander Part&nbsp;&nbsp;</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <select name="compWinnerScore" id="compWinnerScore">
+                <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value="1">&nbsp;&nbsp;3:0&nbsp;&nbsp;</option>
+                <option value="2">&nbsp;&nbsp;3:1&nbsp;&nbsp;</option>
+                <option value="3">&nbsp;&nbsp;3:2&nbsp;&nbsp;</option>
+              </select>
+            </td>
+            <td class="text-center">
+              <ul class="m-0 p-0">
+                <li class="list-inline-item">
+                  <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
+                    data-placement="top" title="Muuda"><i class="fa fa-edit"></i></button>
+                </li>
+                <li class="list-inline-item">
+                  <button class="btn btn-secondary btn-sm rounded-0" type="button" data-toggle="tooltip"
+                    data-placement="top" title="Salvesta"><i class="fas fa-save"></i></i></button>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-  </div>
+    </div>
+  </main>
 
   
   <%- include('partials/footer'); %>

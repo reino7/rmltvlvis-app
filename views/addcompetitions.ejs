@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="et">
+<html lang="et" class="h-100">
 
 <head>
+  
   <%- include('partials/headforadd'); %>
 
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
 
   <%- include('partials/header'); %>
 
+  <main role="main" class="flex-shrink-0">
     <div class="container my-5">
+
       <h2 class="text-center my-4">Võistluse lisamine</h2>
 
       <form action="" method="POST" class="w-50 mx-auto">
@@ -72,7 +75,9 @@
 
       </form>
     </div>
-    <%- include('partials/footer'); %>
+  </main>
+
+  <%- include('partials/footer'); %>
 
 </body>
 
