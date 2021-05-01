@@ -14,8 +14,27 @@
 
     <main role="main" class="flex-shrink-0">
       <div class="container my-5">
-        <h2 class="text-center my-4">Paigutus</h2>
 
+        <div class="row my-3">
+          <div class="col">
+            <!-- <a class="btn btn-secondary mx-right" href="#" role="button">
+              <i class="fas fa-plus"></i>
+              Lisa võistlus
+            </a> -->
+          </div>
+          <div class="col">
+            <h2 class="text-center">Paigutus</h2>
+          </div>
+          <% if (competitionsinfo) { %>
+          <div class="col text-right">
+            <a class="btn btn-secondary mx-right" href="/competitions/<%= competitionsinfo.id %>/registration" role="button">
+              <i class="fas fa-plus"></i>
+              Registreeri võistleja
+            </a>
+          </div>
+          <% } %>
+        </div>
+  
         <div class="table-responsive-md">
 
           <table class="table table-hover" id="reitinguNimekiri">

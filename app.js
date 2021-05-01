@@ -228,11 +228,11 @@ app.get('/competitions/:id/placement', function (req, res) {
   let query = "SELECT * FROM `competitions` WHERE id = '" + competitionID + "' ";
 
   dbConnection.query(query, (err, results) => {
-    console.log('Results here:' + results);
+
     if (err) {
       return res.status(500).send(err);
     }
-
+    console.log(results);
     res.render('placementcompetition', {
       competitionsinfo: results[0]
       //title: 'games'
